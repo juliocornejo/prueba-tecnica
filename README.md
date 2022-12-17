@@ -2,7 +2,7 @@
 Hola, esta es una prueba técnica para candidatos a incorporarse como desarrolladores a Golan SPA.
 
 ## Objetivo
-Debes crear una API REST en Java 8 utilizando el framework Spring Boot que se conecte a una base de datos MySQL. Tránquilo que será algo simple, solo deberás exponer un método utilizando el verbo `HTTP GET` para consumir datos en formato `JSON`.
+Debes crear una API REST con Java 8 utilizando el framework Spring Boot conectado a una base de datos MySQL. Tránquilo que será algo simple, solo deberás exponer un método utilizando el verbo `HTTP GET` para mostrar datos en formato `JSON`.
 
 Eres libre de utilizar el IDE y el gestor de proyecto y dependencias que quieras.  
 De todas formas te recomendámos usar el STS4 https://spring.io/tools y Spring Initializr https://start.spring.io/
