@@ -1,0 +1,93 @@
+info:
+  app:
+    description: '@project.description@'
+    encoding: '@project.build.sourceEncoding@'
+    java:
+      version: '@java.version@'
+    name: '@project.name@'
+    version: '@project.version@'
+
+spring:
+  application:
+    name: prueba-tecnica
+  datasource:
+    url: jdbc:mysql://${GOLAN_BD_URL:localhost}:${GOLAN_BD_PORT:3306}/${GOLAN_BD_INSTANCE:prueba}?useSSL=false
+    username: ${GOLAN_BD_USER:root}
+    password: ${GOLAN_BD_PASS:m3R0b0L4sT4s4sD3lTr4b4j0}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+  use-fqn: true
+
+swagger:
+  configuracion:
+    apiinfo:
+      titulo: ${spring.application.name} - ${spring.profiles.active}
+      version: ${info.app.version}
+      descripcion: Microservices ${spring.application.name} -> ${spring.profiles.active}
+      termsOfServiceUrl: https://golan.cl/
+      license: Swagger license ${spring.profiles.active}
+      licenseUrl: golan.cl
+    documentacion:
+      swgg: http://localhost:${server.port}/swagger-ui.html#
+      docs: http://localhost:${server.port}/api-docs.yaml
+    empresainfo:
+      email: julio.cornejo@golan.cl
+      nombre: Golan
+      url: julio.cornejo@golan.cl
+  respuestas:
+    401:
+      description: Errores de Validación de mensajería y precondiciones de invocación.
+    422:
+      description: Consulta no procesable debido a que los parámetros no cumple con sus restricciones.
+    429:
+      description: Error presentado al momento de incumplimiento del plan definido
+    503:
+      description: Servicio no disponible, el servicio interno no respondió el mensaje esperado
+    204:
+      description: Successful Operation
+    200:
+      description: OK
+
+logging:
+  level:
+    org:
+      springframework: ERROR
+    com:
+      golan:
+        pruebatecnica: INFO
+  file:
+    name: ${spring.application.name}.log
+    path: /
+management:
+  endpoint:
+    loggers:
+      enabled: true
+    metrics:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /api/v1/actuator/
+      exposure:
+        include: "*"
+
+servicio:
+  path:  /golan-api
+  name: Prueba Tecnica Controller
+  description: Api para Prueba Tecnica
+  app:
+    pruebaTecnica:
+      uri: /v1/prueba/{nombre}
+      description: prueba tecnica de Julio
